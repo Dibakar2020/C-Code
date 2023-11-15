@@ -1,4 +1,4 @@
-// Using the malloc standard library function, create an array of hundred float elements 
+// Assigning the values 1^2 , 2^2 , . . ., 100^2 to the elements of this array
 
 #include <stdio.h>
 #include <stdlib.h>
