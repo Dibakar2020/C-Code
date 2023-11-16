@@ -6,6 +6,12 @@ int main()
 {  // Using malloc to allocate memory for an array of 100 floats
     float*array;
     array=(float*)malloc(100*sizeof(float));
+
+    for( int i=0; i<100; i++)
+    {
+        array[i]=(i+1)*(i+1);
+    }
+
     
     // Printing the array elements
     printf("Array elements: ");
