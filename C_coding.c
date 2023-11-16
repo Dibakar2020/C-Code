@@ -1,4 +1,4 @@
-// Here I create a function that takes in an array of arbitrary length and returns an array of two elements, first one is mean and second one is variance. 
+// Here I calculate the mean and variance of the array that I constructed in step 2  
 #include<stdio.h>
 #include<stdlib.h>
 void mean_variance(float *array, int length, float *relust);
@@ -11,6 +11,12 @@ int main()
     {
         array[i]=(i+1)*(i+1);
     }
+    float result[2]; // initializing the length of the array
+    mean_variance(array, 100, result);
+
+    // Print mean and variance
+    printf("Mean: %f\n", result[0]);
+    printf("Variance: %f\n", result[1]);
 
     return 0; // Return 0 to indicate successful execution
 
