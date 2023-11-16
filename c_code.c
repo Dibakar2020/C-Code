@@ -22,6 +22,7 @@ int main() {
     }
     printf("\n");
 
+
     // Don't forget to free the allocated memory when done using it
     free(floatArray);
 
