@@ -1,4 +1,4 @@
-// Using the malloc standard library function, create an array of hundred float elements 
+// Using the malloc standard library function, create an array of hundred float elements. 
 
 #include <stdio.h>
 #include <stdlib.h>
