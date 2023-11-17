@@ -1,48 +1,38 @@
-// Here I make free of the memory used for my array
-#include<stdio.h>
-#include<stdlib.h>
-void mean_variance(float *array, int length, float *relust);
-int main()
-{  // Using malloc to allocate memory for an array of 100 floats
-    float*array;
-    array=(float*)malloc(100*sizeof(float));
+// main.c
+#include <stdio.h>
+#include <stdlib.h>
+#include "stats.h"
 
-    for( int i=0; i<100; i++)
+int main() {
+   float*my_array;
+    my_array=(float*)malloc(100*sizeof(float));
+
+    for (int i = 1; i < 101; i++)
     {
-        array[i]=(i+1)*(i+1);
+        float squaredValue = (float)i * i;
+        printf("Element %d: %f\n", i, squaredValue);
+        my_array[i-1]=i*i;
     }
+
     float result[2]; // initializing the length of the array
-    mean_variance(array, 100, result);
+    mean_variance(my_array, 100, result);
 
     // Print mean and variance
     printf("Mean: %f\n", result[0]);
     printf("Variance: %f\n", result[1]);
 
-    // Free the allocated memory
-    free(array);
+    // Write the result to a text file
+    FILE *textFile = fopen("result.txt", "w");
+    fprintf(textFile, "Mean: %f\n", result[0]);
+    fprintf(textFile, "Variance: %f\n", result[1]);
+    fclose(textFile);
 
-    return 0; // Return 0 to indicate successful execution
+    // Write the result to a binary file
+    FILE *binaryFile = fopen("result.bin", "wb");
+    fwrite(result, sizeof(float), 2, binaryFile);
+    fclose(binaryFile);
 
-}
-
-void mean_variance(float *given_array, int length, float *relust)
-{
-    float mean = 0.0;
-    float variance = 0.0;
-    // calculating mean value 
-    for( int i=0; i<length; i++)
-    {
-        mean += given_array[i];
-    }
-    mean /=length;
-
-    // calculating varriance of array 
-    for( int i=0; i<length; i++)
-    {
-        variance += (given_array[i] - mean)*(given_array[i] - mean);
-    }
-    variance /= length;
-    // assign the result to the output array 
-    relust[0]=mean;
-    relust[1]=variance;
+     // Free the allocated memory
+    free(my_array);
+    return 0;
 }
